@@ -55,3 +55,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# db
+db.sqlite3
+
+# jetbrains
+.idea
+
+# migrations
+*/migrations
