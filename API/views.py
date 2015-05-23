@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 
-from rest_framework import viewsets
+def index(request):
+    if request.user.is_active is False:
+        user = User.objects.create_user(
+            username=request.session._get_session_key(),
+            password='Anniversary110yr'
+        )
+        user = authenticate(username=request.session._get_session_key(), password="Anniversary110yr")
+        login(request, user)
 
-from .serializers import ArticleSerializers
-from .models import Article
+    with open('templates/index.html', 'rb') as f:
+        s = f.read()
 
-class ArticleViewSet(viewsets.ModelViewSet):
-
-    queryset = Article.objects.all().order_by('created_at')
-    serializer_class = ArticleSerializers
+    return HttpResponse(s)

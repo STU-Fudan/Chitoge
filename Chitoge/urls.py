@@ -1,7 +1,10 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 from API import api
+from API import views
 
 urlpatterns = [
     # Examples:
@@ -10,11 +13,16 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 
-    # ReST API
-    url(r'^Anniversary110yr/Chitoge/article/(?P<id>\d+)', api.ArticleDetail.as_view()),
-    # url(r'^Anniversary110yr/Chitoge/article/create', api.CreateArticle.as_view()),
-    url(r'^Anniversary110yr/Chitoge/article/list/', api.ArticleList.as_view()),
-    url(r'^Anniversary110yr/Chitoge/star/(?P<id>\d+)/', api.StarView.as_view()),
-]
+    # index
+    url(r'^Anniversary110yr/Chitoge/$', views.index),
 
+    # ReST API
+    # url(r'^Anniversary110yr/Chitoge/article/(?P<id>\d+)', api.ArticleDetail.as_view()),
+    url(r'^Anniversary110yr/Chitoge/article/create', api.CreateArticle.as_view()),
+    url(r'^Anniversary110yr/Chitoge/article/list', api.ArticleList.as_view()),
+    url(r'^Anniversary110yr/Chitoge/star/(?P<id>\d+)/$', api.StarView.as_view()),
+    url(r'^Anniversary110yr/Chitoge/unstar/(?P<id>\d+)/$', api.UnstarView.as_view()),
+
+    # static files
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

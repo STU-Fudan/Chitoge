@@ -12,9 +12,9 @@ class StarView(APIView):
 
     permission_classes = (permissions.IsAuthenticated, )
 
-    def get(self, request, opt, id):
+    def get(self, request, id):
         try:
-            query_set = request.user.starred_articles.get(id=id)
+            article = request.user.starred_articles.get(id=id)
         except Exception:
             try:
                 article = Article.objects.get(id=id)
@@ -26,8 +26,23 @@ class StarView(APIView):
             except Exception:
                 raise Http404
         else:
-            return Response({'detail': 'You have starred it before.'})
+            return Response({'detail': 'You have starred it before.'}, status=403)
 
+class UnstarView(APIView):
+
+    permission_classes = (permissions.IsAuthenticated, )
+
+    def post(self, request, id):
+        try:
+            article = request.user.starred_articles.get(id=id)
+            request.user.starred_articles.remove(article)
+            request.user.save()
+            article.starCount = article.starCount - 1
+            article.save()
+            return Response({'detail': 'OK'})
+        except Exception as e:
+            raise e
+            return Response({'detail': "You didn't star this article"})
 
 
 
