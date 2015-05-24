@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>说说你与复旦的故事</title>
+
+  <base href=".."/>
+
+  <link rel="stylesheet" href="statics/main.css"/>
+  <link rel="stylesheet" href="statics/lib/photoswipe.css"/>
+  <link rel="stylesheet" href="statics/lib/default-skin.css"/>
+
+  <script type="text/javascript" src="statics/lib/jquery.min.js"></script>
+</head>
+<body>
+  <nav>
+    <div id="logo"></div>
+    <h2>复旦学生网</h2>
+  </nav>
+
+  <div id="add-new"><a href="#share-story"><img id="add-symbol" src="statics/image/add.png"/></a></div>
+  <ul id="story-container">
+  </ul>
+  <div style="text-align: center"><img src="statics/lib/preloader.gif"></div>
+
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+        </button>
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+        </button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="statics/lib/photoswipe-ui-default.min.js"></script>
+  <script src="statics/lib/photoswipe.min.js"></script>
+  <script src="statics/articles.js"></script>
+</body>
+</html>

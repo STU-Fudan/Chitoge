@@ -16,6 +16,9 @@ urlpatterns = [
     # index
     url(r'^Anniversary110yr/Chitoge/$', views.index),
 
+    # articles
+    url(r'^Anniversary110yr/Chitoge/articles/$', views.articles),
+
     # ReST API
     # url(r'^Anniversary110yr/Chitoge/article/(?P<id>\d+)', api.ArticleDetail.as_view()),
     url(r'^Anniversary110yr/Chitoge/article/create', api.CreateArticle.as_view()),
@@ -24,5 +27,4 @@ urlpatterns = [
     url(r'^Anniversary110yr/Chitoge/unstar/(?P<id>\d+)/$', api.UnstarView.as_view()),
 
     # static files
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] + static(settings.STATICS_URL, document_root=settings.STATICS_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

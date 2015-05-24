@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>说说你与复旦的故事</title>
+
+  <link rel="stylesheet" href="statics/lib/jquery.fullPage.css"/>
+  <link rel="stylesheet" href="statics/main.css"/>
+
+  <script type="text/javascript" src="statics/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="statics/lib/jquery.fullPage.min.js"></script>
+  <script type="text/javascript" src="statics/lib/jquery.validate.min.js"></script>
+</head>
+<body>
+  <nav>
+    <div id="logo"></div>
+    <h2>复旦学生网</h2>
+  </nav>
+  <div id="fullpage">
+    <div id="welcome-page" class="section">
+      <div id="icon-container"><span id="icon"></span></div>
+      <div id="title-container">
+        <h2>复旦<i class="kerning"></i>110<i class="kerning"></i>周年校庆</h2>
+        <h1>说说你与复旦的故事</h1>
+      </div>
+      <div id="arrow"></div>
+    </div>
+    <div class="section">
+      <form id="share-form">
+        <input class="form-ctrl" name="name" type="text" placeholder="昵称" minlength="2" required>
+        <input class="form-ctrl" name="year" type="text" placeholder="毕业年份" required>
+        <div class="form-ctrl" id="pic-upload">
+          <div id="pic-upload-wrapper">
+            <img id="add-symbol" src="statics/image/add.png"/>
+            <span id="add-slogan">添加你与复旦的图片</span>
+          </div>
+          <input name="image" type="file">
+        </div>
+        <textarea class="form-ctrl" name="content" placeholder="在这里分享你的故事吧" minlength="1" maxlength="2000" required></textarea>
+        <br/>
+        <input type="submit" class="button" value="分享"><a class="button" href="articles">看看校友的故事</a>
+      </form>
+    </div>
+  </div>
+
+  <script src="statics/main.js"></script>
+</body>
+</html>

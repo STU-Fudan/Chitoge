@@ -102,6 +102,9 @@ USE_TZ = True
 
 STATIC_URL = '/Anniversary110yr/Chitoge/static/'
 
+STATICS_URL = '/Anniversary110yr/Chitoge/statics/'
+STATICS_ROOT = 'static'
+
 MEDIA_URL = '/Anniversary110yr/Chitoge/media/'
 MEDIA_ROOT = 'media'
 

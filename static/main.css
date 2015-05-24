@@ -1,0 +1,297 @@
+/**
+* Created by shuding on 5/23/15.
+* <ds303077135@gmail.com>
+*/
+
+/* Resets */
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, "Lucida Grande", "Segoe UI", Arial, "Hiragino Sans GB", "Source Han Sans CN", 'Source Han Sans', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+  font-size: 18px;
+  background-color: #f0f0f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+i.kerning {
+  display: inline-block;
+  width: .2em;
+}
+
+/* Navigation Bar */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  text-align: center;
+  line-height: 2.444444444em;
+  color: #fff;
+  background-color: #1e1e1e;
+  z-index: 1;
+}
+
+#logo {
+  position: absolute;
+  left: 12px;
+  width: 49px;
+  /* Trick for vertical-align */
+  height: 44px;
+  background-image: url(image/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+nav > h2 {
+  font-size: 1em;
+  font-weight: 300;
+  text-shadow: 0 0 4px #000;
+}
+
+/* Welcome Page */
+#welcome-page {
+  text-align: center;
+}
+
+#icon-container {
+  position: relative;
+  height: 40px;
+}
+
+#title-container {
+  position: relative;
+  height: 0;
+}
+
+#icon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  margin: auto;
+  width: 175px;
+  height: 172px;
+  background-image: url(image/icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#welcome-page h2 {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1em;
+  color: #cf6e6e;
+}
+
+#welcome-page h1 {
+  font-size: 1.333333333em;
+  font-weight: 900;
+  color: #6eb3cf;
+}
+
+#arrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  margin: auto;
+  width: 35px;
+  height: 40px;
+  background-image: url(image/arrow.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  -webkit-animation: arrow-move 1s ease-in-out alternate infinite;
+  -moz-animation: arrow-move 1s ease-in-out alternate infinite;
+  -o-animation: arrow-move 1s ease-in-out alternate infinite;
+  animation: arrow-move 1s ease-in-out alternate infinite;
+}
+
+/* CSS3 Animations */
+@-webkit-keyframes arrow-move {
+  from { bottom: 60px; }
+  to   { bottom: 50px; }
+}
+@-moz-keyframes arrow-move {
+  from { bottom: 60px; }
+  to   { bottom: 50px; }
+}
+@-o-keyframes arrow-move {
+  from { bottom: 60px; }
+  to   { bottom: 50px; }
+}
+@keyframes arrow-move {
+  from { bottom: 60px; }
+  to   { bottom: 50px; }
+}
+
+/* Content-share Form */
+#share-form {
+  padding: 0 35px;
+  text-align: center;
+}
+
+.form-ctrl {
+  width: 100%;
+  padding: 3px;
+  margin: .5em -3px .3em -3px;
+  font-size: .777777778em;
+  background: none;
+  border: 1px solid #7a7a7a;
+  border-radius: 0;
+  text-align: center;
+  -webkit-appearance: none;
+}
+
+.form-ctrl:focus {
+  border: 1px solid #6eb3cf;
+  outline: none;
+}
+
+#pic-upload {
+  position: relative;
+}
+
+#pic-upload-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -3px;
+  text-align: center;
+  pointer-events: none;
+  touch-action: none;
+}
+
+#add-symbol {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+#add-slogan {
+  display: inline-block;
+  margin: 7px;
+  width: 70%;
+  height: 52px;
+  text-align: center;
+  line-height: 50px;
+  vertical-align: middle;
+  color: #a2a2a2;
+  background-color: #dcdcdc;
+}
+
+#pic-upload > input[type=file] {
+  height: 60px;
+  width: 100%;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+
+textarea {
+  height: 10em;
+  resize: none;
+}
+
+textarea.form-ctrl {
+  text-align: left;
+}
+
+.button {
+  display: inline-block;
+  padding: 6px;
+  margin: 0 1em;
+  font-size: .777777778em;
+  font-weight: 300;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  text-decoration: none;
+  background-color: #6eb3cf;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.button:active {
+  background-color: #3E6270;
+}
+
+/* Storys Page */
+
+#story-container {
+  margin: 40px 35px;
+  padding: 0;
+  border-bottom: 1px solid #dcdcdc;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-scrolling: touch;
+}
+
+li.story {
+  padding: 15px 0;
+  border-top: 1px solid #dcdcdc;
+}
+
+.author > p {
+  margin: 0;
+  font-size: .777777778em;
+  color: #6eb3cf;
+}
+
+.author > span {
+  font-size: .666666667em;
+}
+
+.author {
+  float: left;
+  width: 75px;
+}
+
+.content {
+  float: right;
+  width: calc(100% - 80px);
+  font-size: .666666667em;
+}
+
+.content > p {
+  margin: 0;
+  padding: 4px 8px;
+  background-color: #dcdcdc;
+}
+
+.content > p > br {
+  padding: 1em;
+}
+
+.content > p > img {
+  max-width: 100%;
+}
+
+.extra {
+  clear: both;
+  padding-top: 10px;
+  text-align: right;
+  font-size: .666666667em;
+}
+
+.up-number.liked {
+  color: #6eb3cf;
+}
+
+#add-new {
+  margin: 60px 35px 0 35px;
+}

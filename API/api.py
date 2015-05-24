@@ -22,7 +22,7 @@ class StarView(APIView):
                 article.save()
                 request.user.starred_articles.add(article)
                 request.user.save()
-                return Response({'detail': 'OK'})
+                return Response({'detail': 'OK', 'starCount': article.starCount})
             except Exception:
                 raise Http404
         else:
@@ -39,7 +39,7 @@ class UnstarView(APIView):
             request.user.save()
             article.starCount = article.starCount - 1
             article.save()
-            return Response({'detail': 'OK'})
+            return Response({'detail': 'OK', 'starCount': article.starCount})
         except Exception as e:
             raise e
             return Response({'detail': "You didn't star this article"})
