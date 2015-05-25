@@ -5,10 +5,31 @@
 
 ;
 (function () {
+    var token = window.location.search.match(/=(.+)/)[1];
     var $container = $('#story-container');
     var prefix = 'http://localhost:8000/Anniversary110yr/Chitoge';
     var articles = [];
     var templateStr = '<li class="story" id="article-{{id}}">' + '<div class="author">' + '<p>{{name}}</p><span>{{year}}级毕业生</span>' + '</div>' + '<div class="content"><p>{{content}}{{image?"<br/><img class=\'figure\' src=\'"+image+"\'/>":""}}</p></div>' + '<div class="extra">' + '<span class="date">{{var t=new Date(created_at);t.toLocaleDateString()+" "+t.toLocaleTimeString();}}</span>' + '<a class="button up">赞</a>' + '<span class="up-number">{{starCount}}</span>' + '</div>' + '</li>';
+
+    $.ajaxSetup({
+        beforeSend: function(xhr) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    });
 
     var compileTemplate = function (data) {
         return templateStr.replace(/{{(.+?)}}/g, function (match, js) {
@@ -81,7 +102,7 @@
                     });
                     $newArticle.find('.button.up').click(function () {
                         if (!$newArticle.find('.up-number').hasClass('liked')) {
-                            $.post(prefix + '/star/' + obj.id).success(function (data) {
+                            $.post(prefix + '/star/' + obj.id + '/').success(function (data) {
                                 $newArticle.find('.up-number').addClass('liked').html(data.starCount);
                             }).error(function (data) {
                                 $newArticle.find('.up-number').addClass('liked');
@@ -99,6 +120,7 @@
     };
 
     $(document).ready(function () {
+
         fetchArticles();
 
         $(window).scroll(function () {

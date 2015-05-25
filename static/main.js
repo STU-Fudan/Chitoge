@@ -3,7 +3,18 @@
  * <ds303077135@gmail.com>
  */
 $(document).ready(function() {
-    var api = 'http://localhost:8000/Anniversary110yr/Chitoge/article/create';
+    var api = 'http://localhost:8000/Anniversary110yr/Chitoge/article/create/';
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, 'csrftoken'.length + 1) == ('csrftoken' + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring('csrftoken'.length + 1));
+                break;
+            }
+        }
+    }
 
     $('#fullpage').fullpage({
         anchors:['welcome', 'share-story'],
@@ -20,9 +31,15 @@ $(document).ready(function() {
             }
         },
         submitHandler: function(form) {
-            form.action = api;
-            form.method = 'POST';
-            form.submit();
+            var formData = new FormData(form);
+            $.ajax({
+                url: api,
+                method: 'POST',
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", cookieValue);
+                },
+                data: formData
+            });
         }
     });
 });

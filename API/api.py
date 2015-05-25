@@ -12,7 +12,7 @@ class StarView(APIView):
 
     permission_classes = (permissions.IsAuthenticated, )
 
-    def get(self, request, id):
+    def post(self, request, id):
         try:
             article = request.user.starred_articles.get(id=id)
         except Exception:
