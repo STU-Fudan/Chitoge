@@ -5,7 +5,8 @@ from django.middleware import csrf
 
 def index(request):
     if 'csrf_token' not in request.GET:
-        return redirect(request.get_full_path() + '?csrf_token=%s' % (csrf._get_new_csrf_key()))
+        added_query_string = '?csrf_token=%s' if len(request.GET) == 0 else '&csrf_token=%s'
+        return redirect(request.get_full_path() + added_query_string % (csrf._get_new_csrf_key()))
     if request.user.is_active is False:
         if not request.session.exists(request.session.session_key):
             request.session.create()
@@ -23,7 +24,8 @@ def index(request):
 
 def articles(request):
     if 'csrf_token' not in request.GET:
-        return redirect(request.get_full_path() + '?csrf_token=%s' % (csrf._get_new_csrf_key()))
+        added_query_string = '?csrf_token=%s' if len(request.GET) == 0 else '&csrf_token=%s'
+        return redirect(request.get_full_path() + added_query_string % (csrf._get_new_csrf_key()))
     if request.user.is_active is False:
         if not request.session.exists(request.session.session_key):
             request.session.create()
