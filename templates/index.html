@@ -28,19 +28,19 @@
       <div id="arrow"></div>
     </div>
     <div class="section">
-      <form id="share-form">
-        <input class="form-ctrl" name="name" type="text" placeholder="昵称" minlength="2" required>
-        <input class="form-ctrl" name="year" type="text" placeholder="毕业年份" required>
+      <form enctype="multipart/form-data" id="share-form" name="article-form" method="post">
+        <input class="form-ctrl" name="form-name" type="text" placeholder="昵称" minlength="2" required>
+        <input class="form-ctrl" name="form-year" type="text" placeholder="毕业年份" required>
         <div class="form-ctrl" id="pic-upload">
           <div id="pic-upload-wrapper">
             <img id="add-symbol" src="statics/image/add.png"/>
             <span id="add-slogan">添加你与复旦的图片</span>
           </div>
-          <input name="image" type="file">
+          <input name="form-image" type="file" id="form-image">
         </div>
-        <textarea class="form-ctrl" name="content" placeholder="在这里分享你的故事吧" minlength="1" maxlength="2000" required></textarea>
+        <textarea class="form-ctrl" name="form-content" placeholder="在这里分享你的故事吧" minlength="1" maxlength="2000" required></textarea>
         <br/>
-        <input type="submit" class="button" value="分享"><a class="button" href="articles">看看校友的故事</a>
+        <input name="form-submit" type="submit" class="button" value="分享"><a class="button" href="articles">看看校友的故事</a>
       </form>
     </div>
   </div>

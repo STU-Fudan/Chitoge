@@ -5,11 +5,20 @@
 
 ;
 (function () {
-    var token = window.location.search.match(/=(.+)/)[1];
     var $container = $('#story-container');
     var prefix = 'http://localhost:8000/Anniversary110yr/Chitoge';
     var articles = [];
-    var templateStr = '<li class="story" id="article-{{id}}">' + '<div class="author">' + '<p>{{name}}</p><span>{{year}}级毕业生</span>' + '</div>' + '<div class="content"><p>{{content}}{{image?"<br/><img class=\'figure\' src=\'"+image+"\'/>":""}}</p></div>' + '<div class="extra">' + '<span class="date">{{var t=new Date(created_at);t.toLocaleDateString()+" "+t.toLocaleTimeString();}}</span>' + '<a class="button up">赞</a>' + '<span class="up-number">{{starCount}}</span>' + '</div>' + '</li>';
+    var templateStr = '<li class="story" id="article-{{id}}">' +
+                      '<div class="author">' +
+                      '<p>{{name}}</p><span>{{year}}级毕业生</span>' +
+                      '</div>' +
+                      '<div class="content"><p>{{content}}{{image?"<br/><img class=\'figure\' src=\'"+image+"\'/>":""}}</p></div>' +
+                      '<div class="extra">' +
+                      '<span class="date">{{var t=new Date(created_at);t.toLocaleDateString()+" "+t.toLocaleTimeString();}}</span>' +
+                      '<a class="button up">赞</a>' +
+                      '<span class="up-number">{{starCount}}</span>' +
+                      '</div>' +
+                      '</li>';
 
     $.ajaxSetup({
         beforeSend: function(xhr) {
@@ -31,10 +40,17 @@
         }
     });
 
+    var preventXSS = function (str) {
+        return (str + '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+    };
+
     var compileTemplate = function (data) {
         return templateStr.replace(/{{(.+?)}}/g, function (match, js) {
             with (data) {
-                return eval(js);
+                var res = eval(js);
+                if (['name', 'year', 'content'].indexOf(js) !== -1)
+                    return preventXSS(res);
+                return res;
             }
         });
     };

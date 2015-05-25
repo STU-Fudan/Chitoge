@@ -23,6 +23,14 @@ $(document).ready(function() {
         paddingTop: '44px'
     });
 
+    $('#share-form')[0].onsubmit = function () {
+        return false;
+    };
+
+    $('#form-image').on('change', function () {
+        $('#share-form').addClass('attached');
+    });
+
     $('#share-form').validate({
         rules: {
             year: {
@@ -31,15 +39,16 @@ $(document).ready(function() {
             }
         },
         submitHandler: function(form) {
-            var formData = new FormData(form);
-            $.ajax({
-                url: api,
-                method: 'POST',
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("X-CSRFToken", cookieValue);
-                },
-                data: formData
-            });
+            var formData = new FormData();
+            formData.append('name', form.elements.namedItem('form-name').value);
+            formData.append('year', form.elements.namedItem('form-year').value);
+            formData.append('content', form.elements.namedItem('form-content').value);
+            if (form.elements.namedItem('form-image').files.length)
+                formData.append('image', form.elements.namedItem('form-image').files[0]);
+            var request = new XMLHttpRequest();
+            request.open('POST', api);
+            request.setRequestHeader("X-CSRFToken", cookieValue);
+            request.send(formData);
         }
     });
 });

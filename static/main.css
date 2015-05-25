@@ -175,6 +175,10 @@ nav > h2 {
   touch-action: none;
 }
 
+.attached #pic-upload-wrapper {
+  box-shadow: 0 0 0 3px #6EB3CF inset;
+}
+
 #add-symbol {
   display: inline-block;
   width: 25px;
