@@ -173,10 +173,25 @@ nav > h2 {
   text-align: center;
   pointer-events: none;
   touch-action: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.attached #pic-upload-wrapper:before {
+  content: '图片上传较慢，请耐心等待';
+  line-height: 66px;
+  padding: 6px;
+  color: #FFF;
+  background-color: rgba(110, 179, 207, .9);
 }
 
 .attached #pic-upload-wrapper {
   box-shadow: 0 0 0 3px #6EB3CF inset;
+}
+
+.attached #add-symbol, .attached #add-slogan {
+  display: none;
 }
 
 #add-symbol {
@@ -237,12 +252,11 @@ textarea.form-ctrl {
 /* Storys Page */
 
 #story-container {
-  margin: 40px 35px;
+  margin: 20px 10px;
   padding: 0;
   border-bottom: 1px solid #dcdcdc;
   list-style: none;
-  overflow-y: scroll;
-  overflow-scrolling: touch;
+  overflow: hidden;
 }
 
 li.story {
@@ -283,6 +297,7 @@ li.story {
 
 .content > p > img {
   max-width: 100%;
+  margin-top: 10px;
 }
 
 .extra {

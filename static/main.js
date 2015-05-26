@@ -29,6 +29,13 @@ $(document).ready(function() {
 
     $('#form-image').on('change', function () {
         $('#share-form').addClass('attached');
+        if ($('#form-image')[0].files.length) {
+            var reader = new FileReader();
+            reader.readAsDataURL($('#form-image')[0].files[0]);
+            reader.onload = function(e){
+                $('#pic-upload-wrapper').css('background-image', 'url("' + e.target.result + '")');
+            };
+        }
     });
 
     $('#share-form').validate({
@@ -46,11 +53,9 @@ $(document).ready(function() {
             if (form.elements.namedItem('form-image').files.length)
                 formData.append('image', form.elements.namedItem('form-image').files[0]);
             var request = new XMLHttpRequest();
-            request.addEventListener("progress", function (oEvent) {
-                if (oEvent.lengthComputable) {
-                    var percentComplete = oEvent.loaded / oEvent.total;
-                    window.title = '已上传 ' + percentComplete + '%...';
-                }
+            var size = form.elements.namedItem('form-image').files[0].size;
+            request.addEventListener("progress", function () {
+                document.title = '上传中' + ('...').substr((new Date()).getTime() % 3);
             }, false);
             request.addEventListener("load", function () {
                 window.location.href = "/Anniversary110yr/Chitoge/articles/";
