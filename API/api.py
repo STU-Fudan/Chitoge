@@ -48,14 +48,15 @@ class UnstarView(APIView):
 
 class ArticleList(generics.ListAPIView):
 
-    lookup_url_kwarg = 'offset'
+    lookup_url_kwarg = ['offset', 'field']
 
     serializer_class = ArticleSerializers
 
     def get_queryset(self):
         offset = self.request.query_params['offset']
         offset = int(offset)
-        return Article.objects.all()[offset:offset + 6]
+        field = self.request.query_params['field']
+        return Article.objects.order_by('-' + field)[offset:offset + 6]
 
 
 class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):

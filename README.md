@@ -30,7 +30,7 @@ Go to http://localhost:8000/Anniversary110yr/Chitoge/
 
 执行命令(建议在virtualenv下使用)
 
-> pip install requirements.txt  
+> pip install -r requirements.txt  
 > python manage.py makemigrations API  
 > python manage.py migrate  
 > python manage.py runserver 8000  
@@ -64,9 +64,12 @@ multipart/form-data
 [more detail about upload image](http://stackoverflow.com/questions/20473572/django-rest-framework-file-upload). hope this help :) 
 
 ### retrieve  
-> /Anniversary110yr/Chitoge/article/list?offset=:offset  
+> /Anniversary110yr/Chitoge/article/list?offset=:offset&field=:field
 
-introduction: return articles from offset to offset+20 order by descending created time
+:field can be 'starCount' and 'created_at'. Backend server will return data by provided field descending order.
+
+
+introduction: return articles from offset to offset+6 order by descending created time
 
 ##### method: get
 
