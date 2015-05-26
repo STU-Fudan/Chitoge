@@ -6,7 +6,7 @@
 ;
 (function () {
     var $container = $('#story-container');
-    var prefix = 'http://localhost:8000/Anniversary110yr/Chitoge';
+    var prefix = '/Anniversary110yr/Chitoge';
     var articles = [];
     var templateStr = '<li class="story" id="article-{{id}}">' +
                       '<div class="author">' +

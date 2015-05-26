@@ -3,7 +3,7 @@
  * <ds303077135@gmail.com>
  */
 $(document).ready(function() {
-    var api = 'http://localhost:8000/Anniversary110yr/Chitoge/article/create/';
+    var api = '/Anniversary110yr/Chitoge/article/create/';
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
         var cookies = document.cookie.split(';');
@@ -46,6 +46,15 @@ $(document).ready(function() {
             if (form.elements.namedItem('form-image').files.length)
                 formData.append('image', form.elements.namedItem('form-image').files[0]);
             var request = new XMLHttpRequest();
+            request.addEventListener("progress", function (oEvent) {
+                if (oEvent.lengthComputable) {
+                    var percentComplete = oEvent.loaded / oEvent.total;
+                    window.title = '已上传 ' + percentComplete + '%...';
+                }
+            }, false);
+            request.addEventListener("load", function () {
+                window.location.href = "/Anniversary110yr/Chitoge/articles/";
+            }, false);
             request.open('POST', api);
             request.setRequestHeader("X-CSRFToken", cookieValue);
             request.send(formData);
