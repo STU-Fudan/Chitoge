@@ -179,7 +179,7 @@ nav > h2 {
 }
 
 .attached #pic-upload-wrapper:before {
-  content: '图片上传较慢，请耐心等待';
+  content: '图片上传中，请耐心等待';
   line-height: 66px;
   padding: 6px;
   color: #FFF;
