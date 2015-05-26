@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="statics/lib/default-skin.css"/>
 
   <script type="text/javascript" src="statics/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="statics/lib/moment-with-locales.min.js"></script>
 </head>
 <body>
   <nav>
@@ -20,7 +21,10 @@
     <h2>复旦学生网</h2>
   </nav>
 
-  <div id="add-new"><a href="#share-story"><img id="add-symbol" src="statics/image/add.png"/></a></div>
+  <div id="add-new">
+    <a href="./#share-story"><img id="add-symbol" src="statics/image/add.png"/><span> 分享你与复旦的故事</span></a>
+    <a id="sort-btn" class="button">按点赞数排序</a>
+  </div>
   <ul id="story-container">
   </ul>
   <div style="text-align: center"><img src="statics/lib/preloader.gif"></div>

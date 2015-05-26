@@ -10,7 +10,7 @@ body {
   font-size: 18px;
   background-color: #f0f0f0;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -249,11 +249,13 @@ textarea.form-ctrl {
   background-color: #3E6270;
 }
 
-/* Storys Page */
+/* Stories Page */
 
 #story-container {
+  clear: both;
   margin: 20px 10px;
   padding: 0;
+  padding-top: 20px;
   border-bottom: 1px solid #dcdcdc;
   list-style: none;
   overflow: hidden;
@@ -265,23 +267,25 @@ li.story {
 }
 
 .author > p {
+  float: left;
   margin: 0;
   font-size: .777777778em;
+  font-weight: 900;
   color: #6eb3cf;
 }
 
 .author > span {
+  float: right;
   font-size: .666666667em;
 }
 
 .author {
-  float: left;
-  width: 75px;
+  padding: 2px;
 }
 
 .content {
-  float: right;
-  width: calc(100% - 80px);
+  clear: both;
+  padding-top: 5px;
   font-size: .666666667em;
 }
 
@@ -297,6 +301,7 @@ li.story {
 
 .content > p > img {
   max-width: 100%;
+  max-height: 200px;
   margin-top: 10px;
 }
 
@@ -307,10 +312,44 @@ li.story {
   font-size: .666666667em;
 }
 
+.up {
+  padding: 2px 5px;
+  font-size: 12px;
+  text-align: center;
+}
+
 .up-number.liked {
-  color: #6eb3cf;
+  background-color: #F14242;
 }
 
 #add-new {
-  margin: 60px 35px 0 35px;
+  margin: 60px 10px 0 10px;
+}
+
+#add-new > a {
+  height: 25px;
+  text-decoration: none;
+  color: #77B8D2;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+}
+
+#add-new > a:nth-child(1) {
+  float: left;
+}
+
+#add-new > a:nth-child(2) {
+  float: right;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 12px;
+  line-height: 27px;
+}
+
+#add-new > a > span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
 }

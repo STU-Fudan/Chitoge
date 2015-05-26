@@ -53,7 +53,6 @@ $(document).ready(function() {
             if (form.elements.namedItem('form-image').files.length)
                 formData.append('image', form.elements.namedItem('form-image').files[0]);
             var request = new XMLHttpRequest();
-            var size = form.elements.namedItem('form-image').files[0].size;
             request.addEventListener("progress", function () {
                 document.title = '上传中' + ('...').substr((new Date()).getTime() % 3);
             }, false);
