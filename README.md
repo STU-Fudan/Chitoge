@@ -53,14 +53,12 @@ Enjoy it!
 introduction: create a article
 
 ##### method POST
-    
-```json
-{
-	'name': str,
-	'year': str,
-	'content': str,
-	'image': bin,
-}    
+multipart/form-data
+```form
+	name=string,
+	year=string,
+	content=string,
+	image=binary,
 ```
 
 [more detail about upload image](http://stackoverflow.com/questions/20473572/django-rest-framework-file-upload). hope this help :) 
@@ -76,13 +74,13 @@ format(array)
 
 ```json
 [{ 
-'id': number, (primary key)  
-'name': str,   
-'year': str,   
-'content': str,   
-'image': str, (url)
-'created_at': str,
-'starCount': number
+	'id': number, (primary key)  
+	'name': str,   
+	'year': str,   
+	'content': str,   
+	'image': str, (url)
+	'created_at': str,
+	'starCount': number
 }, ...]
 ```
 

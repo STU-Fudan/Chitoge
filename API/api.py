@@ -55,7 +55,7 @@ class ArticleList(generics.ListAPIView):
     def get_queryset(self):
         offset = self.request.query_params['offset']
         offset = int(offset)
-        return Article.objects.all()[offset:offset + 20]
+        return Article.objects.all()[offset:offset + 6]
 
 
 class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
