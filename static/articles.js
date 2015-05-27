@@ -9,7 +9,7 @@
     var $container = $('#story-container');
     var prefix = '/Anniversary110yr/Chitoge';
     var articles = [];
-    var templateStr = '<li class="story" id="article-{{id}}">' + '<div class="author">' + '<p>{{name}}</p><span>{{year}}级毕业生</span>' + '</div>' + '<div class="content"><p>{{content}}{{image?"<br/><img class=\'figure\' src=\'"+image+"\'/>":""}}</p></div>' + '<div class="extra">' + '<span class="date">{{moment(created_at).locale("zh-CN").fromNow();}}</span>' + '<a class="button up up-number">赞 {{starCount}}</a>' + '</div>' + '</li>';
+    var templateStr = '<li class="story" id="article-{{id}}">' + '<div class="author">' + '<p>{{name}}</p><span>{{parseInt(year)}} 届毕业生</span>' + '</div>' + '<div class="content"><p>{{content}}{{image?"<br/><img class=\'figure\' src=\'"+image+"\'/>":""}}</p></div>' + '<div class="extra">' + '<span class="date">{{moment(created_at).locale("zh-CN").fromNow();}}</span>' + '<a class="button up up-number">赞 {{starCount}}</a>' + '</div>' + '</li>';
 
     $.ajaxSetup({
         beforeSend: function (xhr) {

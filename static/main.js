@@ -5,6 +5,7 @@
 $(document).ready(function() {
     var api = '/Anniversary110yr/Chitoge/article/create/';
     var cookieValue = null;
+    var sending = false;
     if (document.cookie && document.cookie != '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
@@ -46,6 +47,10 @@ $(document).ready(function() {
             }
         },
         submitHandler: function(form) {
+            if (sending) {
+                alert('正在提交，请您耐心等待～');
+                return;
+            }
             var formData = new FormData();
             formData.append('name', form.elements.namedItem('form-name').value);
             formData.append('year', form.elements.namedItem('form-year').value);
@@ -62,6 +67,7 @@ $(document).ready(function() {
             request.open('POST', api);
             request.setRequestHeader("X-CSRFToken", cookieValue);
             request.send(formData);
+            sending = true;
         }
     });
 });
