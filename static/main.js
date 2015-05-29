@@ -55,8 +55,10 @@ $(document).ready(function() {
             formData.append('name', form.elements.namedItem('form-name').value);
             formData.append('year', form.elements.namedItem('form-year').value);
             formData.append('content', form.elements.namedItem('form-content').value);
-            if (form.elements.namedItem('form-image').files.length)
+            if (form.elements.namedItem('form-image').files.length) {
                 formData.append('image', form.elements.namedItem('form-image').files[0]);
+                $('#pic-upload-wrapper').attr('upload-slogan', '图片上传中，请耐心等待');
+            }
             var request = new XMLHttpRequest();
             request.addEventListener("progress", function () {
                 document.title = '上传中' + ('...').substr((new Date()).getTime() % 3);
